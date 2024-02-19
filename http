@@ -42,3 +42,5 @@ https://github.com/neemiasbsilva/object-detection-opencv/blob/master/template-ma
    ```
 
 這樣，您就可以將圖像中的特定顏色保留為黑白，並將其他顏色設置為透明。調整遮罩的閾值 (`cv2.threshold`) 可以控制保留的顏色範圍。
+gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+gray_masked = cv2.bitwise_and(gray, gray, mask=cv2.bitwise_not(mask))
