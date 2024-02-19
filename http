@@ -1,1 +1,44 @@
 https://github.com/neemiasbsilva/object-detection-opencv/blob/master/template-matching.ipynb
+要將圖像中的特定顏色保留為黑白，並將其他顏色設置為透明，您可以使用 OpenCV 的遮罩（mask）技術。以下是一個基本的步驟：
+
+1. **讀取圖像：**
+   使用 OpenCV 讀取您要處理的圖像。
+
+   ```python
+   import cv2
+
+   # 讀取圖像
+   image = cv2.imread('your_image.jpg')
+   ```
+
+2. **轉換為灰度圖像：**
+   將圖像轉換為灰度圖像，以便更容易識別顏色。
+
+   ```python
+   gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+   ```
+
+3. **創建遮罩：**
+   創建一個與圖像大小相同的遮罩，並將保留的黑白顏色區域設置為白色（255），其他區域設置為黑色（0）。
+
+   ```python
+   _, mask = cv2.threshold(gray_image, 240, 255, cv2.THRESH_BINARY)
+   ```
+
+4. **應用遮罩：**
+   使用遮罩將圖像中的顏色保留為黑白，其他顏色設置為透明。
+
+   ```python
+   result = cv2.bitwise_and(image, image, mask=mask)
+   ```
+
+5. **顯示結果：**
+   顯示處理後的圖像。
+
+   ```python
+   cv2.imshow('Result', result)
+   cv2.waitKey(0)
+   cv2.destroyAllWindows()
+   ```
+
+這樣，您就可以將圖像中的特定顏色保留為黑白，並將其他顏色設置為透明。調整遮罩的閾值 (`cv2.threshold`) 可以控制保留的顏色範圍。
