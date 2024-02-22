@@ -147,3 +147,29 @@ cv2.drawContours(image, contours, -1, (0, 255, 0), 2)
 cv2.imshow('Result', image)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
+
+
+import cv2
+import numpy as np
+
+# 讀取影像
+image = cv2.imread('your_image_path.jpg')
+
+# 將影像轉換為灰度影像
+gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+
+# 找到非黑色像素的索引
+non_zero_indices = np.argwhere(gray_image > 0)
+
+# 取得物件的最小外接矩形座標
+top_left = tuple(non_zero_indices.min(axis=0)[::-1])
+bottom_right = tuple(non_zero_indices.max(axis=0)[::-1])
+
+# 分割物件並儲存為新影像
+object_image = image[top_left[1]:bottom_right[1], top_left[0]:bottom_right[0]]
+cv2.imwrite('object_image.jpg', object_image)
+
+# 顯示結果
+cv2.imshow('Object Image', object_image)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
