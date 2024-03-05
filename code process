@@ -21,17 +21,22 @@ set "datetime=%date:~0,4%%date:~5,2%%date:~8,2%%time:~0,2%%time:~3,2%%time:~6,2%
 set "zipfile=D:\Project\mqc_web\Database\HIS\%datetime%_MQC_FORM_IMG.zip"
 
 rem 壓縮檔案
-"C:\Program Files\WinRAR\WinRAR.exe" a -afzip "%zipfile%" "%dir%\*"
+"C:\Program Files\WinRAR\WinRAR.exe" a -afzip "%zipfile%" "%dir%"
 
 rem 刪除子目錄內的檔案
 for /d %%D in ("%dir%\*") do del /q "%%D\*"
 
 endlocal
 
-解壓縮後的目錄結構需要為
+執行上述指令後%datetime%_MQC_FORM_IMG.zip解壓縮後的目錄結構如下:
+Project-->mqc_web-->form--continue (可能含.csv or .txt檔案)
+                        --rowdata (可能含.csv or .txt檔案)
+                        --img (可能含.png檔案)
+如何改成解壓縮後目錄結構為:
 form--continue (可能含.csv or .txt檔案)
     --rowdata (可能含.csv or .txt檔案)
     --img (可能含.png檔案)
+
 
 
 
