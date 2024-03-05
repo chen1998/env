@@ -67,37 +67,11 @@ endlocal
 2.執行D:\Project\mqc_web\formcod資料夾內的mqc_nopeak.py
 3.將D:\Project\mqc_web\Database內的.zip檔案mput至ftp://tcftp001/ruby/
 4.刪除D:\Project\mqc_web\Database內的.zip檔案
-
-您可以使用 Windows 工作排程器來設定定期執行這些任務。以下是設定排程的步驟：
-
-1. 打開「工作排程器」：在 Windows 搜尋欄中輸入「工作排程器」，然後點擊打開。
-
-2. 創建新的工作：在右側的動作窗格中，點擊「建立基本工作」。
-
-3. 命名和描述工作：在新出現的視窗中，輸入工作的名稱和描述，然後點擊「下一步」。
-
-4. 選擇觸發器：選擇「每天」，並設定適當的開始時間，然後點擊「下一步」。
-
-5. 選擇動作：選擇「啟動程式」，並在程式/腳本欄中分別輸入以下指令：
-
-   - `python D:\Project\mqc_web\formcod\download_mqc_rowdata_nopeak.py` （第一個任務）
-   - `python D:\Project\mqc_web\formcod\mqc_nopeak.py` （第二個任務）
-   - `ftp -s:"D:\Project\mqc_web\Database\ftp_script.txt"` （第三個任務）
-   - `del /Q D:\Project\mqc_web\Database\*.zip` （第四個任務）
-
-6. 創建 ftp_script.txt 檔案，內容為：
-
-   ```
-   open tcftp001
-   ruby
-   mput D:\Project\mqc_web\Database\*.zip
-   quit
-   ```
-
-7. 完成設定：檢查所有設定，確保沒有錯誤，然後點擊「完成」。
-
-這樣就設定好了每天定時執行這些任務的排程。請注意，這僅供參考，您可能需要根據實際情況進行調整。
-
+@echo off
+python D:\Project\mqc_web\formcod\download_mqc_rowdata_nopeak.py
+python D:\Project\mqc_web\formcod\mqc_nopeak.py
+ftp -s:"D:\Project\mqc_web\Database\ftp_script.txt"
+del /Q D:\Project\mqc_web\Database\*.zip
 
 
 cd /d D:/Project/mqc_web/form/img
