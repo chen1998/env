@@ -51,6 +51,9 @@ for /f "tokens=1,2 delims=_" %%a in ('dir /b /od "D:\Project\mqc_web\Database\HI
 rem 如果找不到上一次壓縮檔案，設置初始值為空
 if not defined last_compressed_datetime set "last_compressed_datetime="
 
+rem 顯示上一次壓縮檔案的日期和時間
+echo Last compressed datetime: %last_compressed_datetime%
+
 rem 設定壓縮檔名
 set "datetime=%date:~0,4%%date:~5,2%%date:~8,2%%time:~0,2%%time:~3,2%%time:~6,2%"
 set "zipfile=D:\Project\mqc_web\Database\HIS\%datetime%_MQC_FORM_IMG.zip"
