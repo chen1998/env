@@ -63,7 +63,10 @@ forfiles /p "D:\Project\mqc_web\form" /s /m * /d +%last_compressed_datetime% /c 
 
 endlocal
 
-
+1.執行D:\Project\mqc_web\formcod資料夾內的download_mqc_rowdata_nopeak.py
+2.執行D:\Project\mqc_web\formcod資料夾內的mqc_nopeak.py
+3.將D:\Project\mqc_web\Database內的.zip檔案mput至ftp://tcftp001/ruby/
+4.刪除D:\Project\mqc_web\Database內的.zip檔案
 
 
 
