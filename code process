@@ -4,3 +4,18 @@
 3.將西元月份日期時間_MQC_FORM_IMG.zip儲存在D:\Project\mqc_web\Database\HIS
 4.刪除D:\Project\mqc_web\form子資料夾內的檔案,要保留資料夾
 5.每半小時執行一次
+
+@echo off
+setlocal
+
+rem 設定壓縮檔名
+set "datetime=%date:~0,4%%date:~5,2%%date:~8,2%%time:~0,2%%time:~3,2%%time:~6,2%"
+set "zipfile=D:\Project\mqc_web\Database\HIS\%datetime%_MQC_FORM_IMG.zip"
+
+rem 壓縮檔案
+"C:\Program Files\7-Zip\7z.exe" a -tzip "%zipfile%" "D:\Project\mqc_web\form\*"
+
+rem 刪除子目錄內的檔案
+for /d %%D in ("D:\Project\mqc_web\form\*") do del /q "%%D\*"
+
+endlocal
