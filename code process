@@ -1,0 +1,6 @@
+設定window排程
+1.將D:\Project\mqc_web\form內按樹狀結構壓縮所有子目錄及其中檔案
+2.將壓縮檔命名為西元月份日期時間_MQC_FORM_IMG.zip ex.202403051200005_MQC_FORM_IMG.zip
+3.將西元月份日期時間_MQC_FORM_IMG.zip儲存在D:\Project\mqc_web\Database\HIS
+4.刪除D:\Project\mqc_web\form子資料夾內的檔案,要保留資料夾
+5.每半小時執行一次
