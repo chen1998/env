@@ -8,15 +8,23 @@
 @echo off
 setlocal
 
+rem 檢查指定目錄是否有檔案
+set "dir=D:\Project\mqc_web\form"
+dir /a-d /b "%dir%\*" >nul 2>&1
+if errorlevel 1 (
+    echo No files found in %dir%.
+    exit /b
+)
+
 rem 設定壓縮檔名
 set "datetime=%date:~0,4%%date:~5,2%%date:~8,2%%time:~0,2%%time:~3,2%%time:~6,2%"
 set "zipfile=D:\Project\mqc_web\Database\HIS\%datetime%_MQC_FORM_IMG.zip"
 
 rem 壓縮檔案
-"C:\Program Files\7-Zip\7z.exe" a -tzip "%zipfile%" "D:\Project\mqc_web\form\*"
+"C:\Program Files\7-Zip\7z.exe" a -tzip "%zipfile%" "%dir%\*"
 
 rem 刪除子目錄內的檔案
-for /d %%D in ("D:\Project\mqc_web\form\*") do del /q "%%D\*"
+for /d %%D in ("%dir%\*") do del /q "%%D\*"
 
 endlocal
 
