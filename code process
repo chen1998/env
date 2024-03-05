@@ -19,3 +19,9 @@ rem 刪除子目錄內的檔案
 for /d %%D in ("D:\Project\mqc_web\form\*") do del /q "%%D\*"
 
 endlocal
+
+
+
+cd /d D:/Project/mqc_web/form/img
+"C:\Program Files\WinRAR\WinRAR.exe" -afzip
+D:/Project/mqc_web/Database/HIS/MQC_FORM_IMG.zip *.png
