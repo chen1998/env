@@ -28,6 +28,18 @@ for /d %%D in ("%dir%\*") do del /q "%%D\*"
 
 endlocal
 
+解壓縮後的目錄結構需要為
+form--continue (可能含.csv or .txt檔案)
+    --rowdata (可能含.csv or .txt檔案)
+    --img (可能含.png檔案)
+
+
+
+
+
+
+
+
 
 
 cd /d D:/Project/mqc_web/form/img
