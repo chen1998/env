@@ -39,7 +39,26 @@ form--continue (可能含.csv or .txt檔案)
 
 
 
+---------------------
+@echo off
+setlocal
 
+rem 取得上一次壓縮檔案的日期和時間
+for /f "tokens=1,2 delims=_" %%a in ('dir /b /od "D:\Project\mqc_web\Database\HIS\*_MQC_FORM_IMG.zip"') do (
+    set "last_compressed_datetime=%%a_%%b"
+)
+
+rem 如果找不到上一次壓縮檔案，設置初始值為空
+if not defined last_compressed_datetime set "last_compressed_datetime="
+
+rem 設定壓縮檔名
+set "datetime=%date:~0,4%%date:~5,2%%date:~8,2%%time:~0,2%%time:~3,2%%time:~6,2%"
+set "zipfile=D:\Project\mqc_web\Database\HIS\%datetime%_MQC_FORM_IMG.zip"
+
+rem 找出在上一次壓縮檔案之後新增的檔案並壓縮它們
+forfiles /p "D:\Project\mqc_web\form" /s /m * /d +%last_compressed_datetime% /c "cmd /c if @isdir==FALSE \"C:\Program Files\WinRAR\WinRAR.exe\" a -afzip -ep1 \"%zipfile%\" @path"
+
+endlocal
 
 
 
