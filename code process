@@ -74,15 +74,20 @@ ftp -s:"D:\Project\mqc_web\Database\ftp_script.txt"
 del /Q D:\Project\mqc_web\Database\*.zip
 
 
-cd /d D:/Project/mqc_web/form/img
-"C:\Program Files\WinRAR\WinRAR.exe" -afzip
-D:/Project/mqc_web/Database/HIS/MQC_FORM_IMG.zip *.png
-
-
-open tcftp001
-cd /ruby
-dir
-mdel *_MQC_FORM_IMG*.zip \y
-ftp> mdel *_MQC_FORM_IMG*.zip 
-
-mdel 20240305161717_MQC_FORM_IMG.zip? ftp>
+@ftp -s:U:\專案排程\MQCdata_to_dataform\get_img_ftp.txt
+@echo
+xcopy /y/s "U:\專案排程\MQCdata_to_dataform\mqc_results\*MQC_FORM_IMG*.zip" "\\auo\gfs\L6000\L6A00\L6AP0\L6AP0_PUBLIC\AR_Photo\Scanner\risk_control\MQC_DataForm\"
+pause
+出現以下
+ftp> cd ruby/
+250 CWD command successful.
+ftp> prompt
+互動模式 關閉 。
+ftp> mget *MQC_FORM_IMG*.zip
+200 Type set to A.
+200 PORT command successful.
+150 Opening ASCII mode data connection for 20240306094208_MQC_FORM_IMG.zip(40971506 bytes).
+226 Transfer complete.
+ftp: 40971506 位元組已接收，時間: 1.35秒數 30281.97KB/sec。
+ftp>
+沒有接著執行xcopy的錯誤
