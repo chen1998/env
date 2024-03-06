@@ -77,3 +77,12 @@ del /Q D:\Project\mqc_web\Database\*.zip
 cd /d D:/Project/mqc_web/form/img
 "C:\Program Files\WinRAR\WinRAR.exe" -afzip
 D:/Project/mqc_web/Database/HIS/MQC_FORM_IMG.zip *.png
+
+
+open tcftp001
+cd /ruby
+dir
+mdel *_MQC_FORM_IMG*.zip \y
+ftp> mdel *_MQC_FORM_IMG*.zip 
+
+mdel 20240305161717_MQC_FORM_IMG.zip? ftp>
