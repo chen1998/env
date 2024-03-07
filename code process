@@ -129,3 +129,31 @@ for %%F in ("%source_folder%\*") do (
 )
 
 endlocal
+
+
+@echo off
+setlocal enabledelayedexpansion
+
+rem 获取当前日期和时间
+for /f "tokens=1-4 delims=/: " %%a in ('echo %date% %time%') do (
+  set year=%%d
+  set month=%%b
+  set day=%%c
+  set hour=%%e
+  set minute=%%f
+)
+
+rem 设置时间戳
+set timestamp=!year!!month!!day!!hour!!minute!
+
+rem 设置源文件夹路径
+set source_folder=D:\your_source_folder_path
+
+rem 设置目标压缩文件名
+set zip_name=!timestamp!_msk500_project_code.zip
+
+rem 压缩文件
+cd %source_folder%
+"C:\Program Files\WinRAR\WinRAR.exe" a -r -ep1 "%zip_name%" *
+
+endlocal
