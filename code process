@@ -114,3 +114,18 @@ if defined latest_file (
 )
 
 endlocal
+
+@echo off
+setlocal enabledelayedexpansion
+
+set "source_folder=D:\Project\mqc_web\Database\a"
+set "destination_folder=D:\Project\mqc_web\Database\b"
+
+for %%F in ("%source_folder%\*") do (
+    set "file_exists="
+    if not exist "%destination_folder%\%%~nxF" (
+        copy "%%F" "%destination_folder%"
+    )
+)
+
+endlocal
