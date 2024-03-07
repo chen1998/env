@@ -91,3 +91,26 @@ ftp> mget *MQC_FORM_IMG*.zip
 ftp: 40971506 位元組已接收，時間: 1.35秒數 30281.97KB/sec。
 ftp>
 沒有接著執行xcopy的錯誤
+
+
+@echo off
+setlocal enabledelayedexpansion
+
+set "source_folder=D:\Project\mqc_web\Database\a"
+set "destination_folder=D:\Project\mqc_web\Database\b"
+set "search_string=MQC"
+set "latest_file="
+
+for /f "tokens=*" %%A in ('dir /b /a-d /o-d "%source_folder%\*%search_string%*.zip"') do (
+    set "latest_file=%%A"
+    goto :copy_latest
+)
+
+:copy_latest
+if defined latest_file (
+    xcopy /y "%source_folder%\%latest_file%" "%destination_folder%"
+) else (
+    echo No files found matching the search criteria.
+)
+
+endlocal
