@@ -1,0 +1,6 @@
+目的 : uni 及 mered存放在同一行方便後續取用
+uni = [9,8,7,6,5] :影像title
+merged為影像,shape =(640, 1680, 3) 
+merged_box = np.array([merged,uni])
+出現 ValueError: setting an array element with a sequence. The requested array has an inhomogeneous shape after 1 dimensions. The detected shape was (2,) + inhomogeneous part.
+解決方式?
