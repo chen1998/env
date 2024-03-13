@@ -165,4 +165,28 @@ destination_folder=\\auo\gfs\L6000\L6A00\L6AP0\L6AP0_PUBLIC\AR_Photo\Scanner\ris
 複製兩個檔案,原檔案名: EDA_CHIPID_IMG.zip 、edge_df.csv
 複製過去後檔案名分別儲存為24_0313_0950IMG.zip、24_0313_0950_df.csv (假設當下時間為2024年3月13上午9:50)
 
+@echo off
+setlocal
+
+REM 設置源文件夾和目標文件夾的路徑
+set "source_folder=U:\Project_task\2D_identify_chip_ID"
+set "destination_folder=\\auo\gfs\L6000\L6A00\L6AP0\L6AP0_PUBLIC\AR_Photo\Scanner\risk_control\CHIPID_Result"
+
+REM 提取當前日期和時間作為文件名的一部分
+for /f "tokens=1-4 delims=/ " %%a in ('date /t') do (
+    set "date=%%d_%%a%%b"
+)
+for /f "tokens=1-2 delims=: " %%a in ('time /t') do (
+    set "time=%%a%%b"
+)
+set "timestamp=%date%_%time%"
+
+REM 複製文件並更改文件名
+copy "%source_folder%\EDA_CHIPID_IMG.zip" "%destination_folder%\%timestamp%IMG.zip"
+copy "%source_folder%\edge_df.csv" "%destination_folder%\%timestamp%_df.csv"
+
+echo 操作完成。
+pause
+
+
 
