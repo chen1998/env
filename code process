@@ -157,3 +157,12 @@ cd %source_folder%
 "C:\Program Files\WinRAR\WinRAR.exe" a -r -ep1 "%zip_name%" *
 
 endlocal
+
+
+----------------------
+source_folder=U:\Project_task\2D_identify_chip_ID
+destination_folder=\\auo\gfs\L6000\L6A00\L6AP0\L6AP0_PUBLIC\AR_Photo\Scanner\risk_control\CHIPID_Result
+複製兩個檔案,原檔案名: EDA_CHIPID_IMG.zip 、edge_df.csv
+複製過去後檔案名分別儲存為24_0313_0950IMG.zip、24_0313_0950_df.csv (假設當下時間為2024年3月13上午9:50)
+
+
