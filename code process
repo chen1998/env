@@ -190,3 +190,28 @@ pause
 
 
 
+import os
+import datetime
+
+def delete_old_files(folder_path):
+    # 取得當前日期
+    current_date = datetime.datetime.now()
+    
+    # 遍歷資料夾中的所有檔案
+    for root, dirs, files in os.walk(folder_path):
+        for file in files:
+            file_path = os.path.join(root, file)
+            # 取得檔案的建立時間
+            creation_time = os.path.getctime(file_path)
+            # 將建立時間轉換為日期
+            creation_date = datetime.datetime.fromtimestamp(creation_time)
+            # 計算檔案建立時間與當前日期的差距
+            days_difference = (current_date - creation_date).days
+            # 如果建立時間超過七天，則刪除檔案
+            if days_difference > 7:
+                os.remove(file_path)
+                print(f"已刪除檔案: {file_path}")
+
+# 指定要清理的資料夾路徑
+folder_path = 'path_to_your_folder'
+delete_old_files(folder_path)
