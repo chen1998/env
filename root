@@ -1,2 +1,31 @@
 取得pre_imgdb資料夾內1天內有變動的所有子資料夾,將所有子資料夾路徑存在model_ver_list
 for loop 依次篩選model_ver_list內的路徑,判斷該路徑下的資料夾是否在天內有修改或新建
+import os
+import datetime
+
+def get_recently_modified_folders(parent_folder, days=1):
+    model_ver_list = []
+    # 取得目前時間
+    current_time = datetime.datetime.now()
+    # 設定時間範圍
+    time_threshold = current_time - datetime.timedelta(days=days)
+    
+    # 遍歷parent_folder下的所有資料夾
+    for folder in os.listdir(parent_folder):
+        folder_path = os.path.join(parent_folder, folder)
+        # 確保是資料夾且在時間範圍內
+        if os.path.isdir(folder_path) and datetime.datetime.fromtimestamp(os.path.getmtime(folder_path)) >= time_threshold:
+            model_ver_list.append(folder_path)
+    
+    return model_ver_list
+
+# 取得pre_imgdb資料夾內1天內有變動的所有子資料夾
+parent_folder = 'pre_imgdb'
+days = 1
+model_ver_list = get_recently_modified_folders(parent_folder, days)
+
+# 逐一檢查是否有修改或新建
+for folder_path in model_ver_list:
+    # 檢查資料夾是否在天內有修改或新建
+    # 這裡可以根據你的需求進行相應的處理
+    print(f"Folder {folder_path} was modified or created within the last {days} days.")
