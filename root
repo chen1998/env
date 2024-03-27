@@ -1,0 +1,2 @@
+取得pre_imgdb資料夾內1天內有變動的所有子資料夾,將所有子資料夾路徑存在model_ver_list
+for loop 依次篩選model_ver_list內的路徑,判斷該路徑下的資料夾是否在天內有修改或新建
