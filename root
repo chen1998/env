@@ -29,3 +29,10 @@ for folder_path in model_ver_list:
     # 檢查資料夾是否在天內有修改或新建
     # 這裡可以根據你的需求進行相應的處理
     print(f"Folder {folder_path} was modified or created within the last {days} days.")
+
+
+col = ['X', 'Y', 'TOOL', 'TYPE', 'TIME']
+判斷df內是否有多個特定列重複的行,特定列名在col內,有重複的化
+
+t = 2024/02/01 14:07:19.248000
+計算t距離現在的天數差
